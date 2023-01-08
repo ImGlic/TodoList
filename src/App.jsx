@@ -52,8 +52,7 @@ const App = () => {
       <div className="container">
         <Header />
         <Routes>
-          <Route
-            exact
+          <Route           
             path="/home"
             element={
               <>
@@ -66,7 +65,9 @@ const App = () => {
               </>
             }
           />
-          <Route exact path="" component={TaskDetails} />
+          <Route path="/:taskTitle">
+            {TaskDetails}
+          </Route>
         </Routes>
       </div>
     </Router>
