@@ -65,9 +65,10 @@ const App = () => {
               </>
             }
           />
-          <Route path="/:taskTitle">
-            {TaskDetails}
-          </Route>
+          <Route path="/taskTitle"
+          component = {TaskDetails}         
+          />
+            
         </Routes>
       </div>
     </Router>
