@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import { React, useState, useEffect } from "react";
+import axios from "axios";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 import Tasks from "./componentes/Tasks.jsx";
@@ -9,19 +10,8 @@ import TaskDetails from "./componentes/TaskDetails.jsx";
 import "./App.css";
 
 const App = () => {
-  const [tasks, setTasks] = useState([
-    {
-      id: 1,
-      title: "Estudar Programação",
-      completed: false,
-    },
-    {
-      id: 2,
-      title: "Estudar React",
-      completed: true,
-    },
-  ]);
-
+  const [tasks, setTasks] = useState([]);
+ 
   const handleTaskClick = (taskId) => {
     const newTask = tasks.map((task) => {
       if (task.id === taskId) return { ...task, completed: !task.completed };
@@ -52,7 +42,7 @@ const App = () => {
       <div className="container">
         <Header />
         <Routes>
-          <Route           
+          <Route
             path="/home"
             element={
               <>
@@ -65,10 +55,8 @@ const App = () => {
               </>
             }
           />
-          <Route path="/taskTitle"
-          component = {TaskDetails}         
-          />
-            
+
+          <Route path="/:taskTitle" element={<TaskDetails />} />
         </Routes>
       </div>
     </Router>

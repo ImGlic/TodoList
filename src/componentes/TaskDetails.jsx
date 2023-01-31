@@ -1,26 +1,32 @@
 import React from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Navigate, useNavigate } from "react-router-dom";
+
 
 import Button from "./Button";
 
 import"./TaskDetails.css";
 
 
-const TaskDetails = () => { 
-
+const TaskDetails = () => {  
   const params = useParams();  
-  
+  const history = useNavigate();
+  const handleBackButton  = () => {
+    history(-1);
+  };
+
   return (
     <>
       <div className="back-button-container">
-        <Button>Voltar</Button>
+        <Button
+        onClick={handleBackButton}
+        >Voltar
+        </Button>
       </div>
       <div className="task-details-container">
         <h2>{params.taskTitle}</h2>
-            <p>  Lorem ipsum dolor sit amet consectetur,
-                 adipisicing elit. Voluptatum, 
-                 fugiat eius harum culpa quas incidunt ratione nemo quia doloremque a 
-                 voluptates natus nesciunt eos. Ea vitae neque sit? Recusandae, hic.
+            <p>  Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim sequi autem 
+              quasi atque facilis sit, a doloremque explicabo minus
+               quo error voluptatibus, deleniti ducimus tenetur accusamus nemo hic voluptate accusantium.
             </p>
       </div>
     </>
